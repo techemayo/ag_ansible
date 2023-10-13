@@ -1,0 +1,25 @@
+---
+- name: Generate Configuration Files
+  hosts: localhost
+  tasks:
+    - name: Create 'configs' directory if it doesn't exist
+      file:
+        path: configs
+        state: directory
+      tags: [config]
+
+    - name: Generate configuration files for leader, worker, and backup nodes
+      template:
+        src: config_template.j2
+        dest: configs/config_{{ node_name }}.conf
+      vars:
+        role: "{{ item.role }}"
+        node_name: "{{ item.node_name }}"
+        backup_for: "{{ item.backup_for }}"
+      with_items:
+        - { role: "leader", node_name: "node1", backup_for: "" }
+        - { role: "worker", node_name: "node2", backup_for: "" }
+        - { role: "worker", node_name: "node3", backup_for: "" }
+        - { role: "worker", node_name: "node4", backup_for: "" }
+        - { role: "backup", node_name: "node5", backup_for: "node1" }
+      tags: [config]
