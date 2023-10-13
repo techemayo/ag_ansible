@@ -1,0 +1,15 @@
+{% if role == "leader" %}
+cluster_name: "my_cluster"
+log_level: "info"
+role: "leader"
+{% elif role == "worker" %}
+cluster_name: "my_cluster"
+log_level: "info"
+role: "worker"
+worker_id: {{ 1000 + node_name.split("node")[1] | int }}
+{% elif role == "backup" %}
+cluster_name: "my_cluster"
+log_level: "info"
+role: "backup"
+backup_for: {{ backup_for }}
+{% endif %}
