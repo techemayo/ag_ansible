@@ -1,4 +1,6 @@
-The repo contains the code for the scenario desribed ahead:
+
+
+The repo contains the code for the scenario described ahead:
 
 
 **Dynamic Configuration File Generation Using Jinja2 Templating with Node Name-Based Logic**
