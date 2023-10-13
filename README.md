@@ -1,5 +1,18 @@
-
-
+**STEP 1**: Install pre-requisites
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py --user
+python3 -m pip install --user ansible
+ansible --version
+```
+**STEP 2**: Clone the repository
+```
+git clone git@github.com:techemayo/ag_ansible.git
+```
+**STEP 3**: 
+```
+cd ag_ansible/ && ansible-playbook -i inventory.ini generate_configs.yml
+```
 The repo contains the code for the scenario described ahead:
 
 
